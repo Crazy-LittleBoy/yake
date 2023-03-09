@@ -37,5 +37,5 @@ ENV SERVER_PORT 5000
 EXPOSE "$SERVER_PORT"
 
 # set default command
-#CMD [ "python", "yake-rest-api.py" ]
-CMD [ "uvicorn yake-rest-api:app --reload --port=5000 --host=0.0.0.0"]
+CMD [ "python", "yake-rest-api.py" ]
+#CMD [ "uvicorn yake-rest-api:app --reload --port=5000 --host=0.0.0.0"]
