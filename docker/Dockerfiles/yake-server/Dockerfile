@@ -24,13 +24,13 @@ RUN pip install -U gunicorn
 #RUN pip install git+https://github.moeyy.xyz/https://github.com/python-greenlet/greenlet.git
 #RUN pip install meinheld
 #RUN pip install git+https://github.moeyy.xyz/https://github.com/mopemope/meinheld.git@1.0.2
-RUN pip install git+https://github.moeyy.xyz/https://github.com/idot/meinheld.git@2bfe452d6608c92688d92337c87b1dd6448f4ccb
+RUN pip install git+https://ghproxy.com/https://github.com/idot/meinheld.git@2bfe452d6608c92688d92337c87b1dd6448f4ccb
 RUN wget https://raw.githubusercontent.com/Crazy-LittleBoy/yake/master/requirements.txt -O requirements.txt
 RUN pip install -r requirements.txt
 
 # install yake via pip
 #RUN pip install git+https://github.com/liaad/yake.git
-RUN pip install git+https://github.moeyy.xyz/https://github.com/Crazy-LittleBoy/yake.git
+RUN pip install git+https://ghproxy.com/https://github.com/Crazy-LittleBoy/yake.git
 
 # Copy server startup script
 COPY ./yake-rest-api.py /temp
@@ -40,5 +40,5 @@ ENV SERVER_PORT 5000
 EXPOSE "$SERVER_PORT"
 
 # set default command
-#CMD [ "python", "yake-rest-api.py" ]
-CMD ["gunicorn --workers=2 --worker-class='meinheld.gmeinheld.MeinheldWorker' yake-rest-api:app"]
+CMD [ "python", "yake-rest-api.py" ]
+#CMD ["gunicorn --workers=2 --worker-class='meinheld.gmeinheld.MeinheldWorker' yake-rest-api:app"]
