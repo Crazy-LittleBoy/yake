@@ -18,13 +18,10 @@ RUN python -m pip install --upgrade pip
 RUN pip install flasgger
 
 # install requirements first to engage docker cache
-RUN pip install -U gunicorn
-# RUN wget https://raw.githubusercontent.com/LIAAD/yake/master/requirements.txt -O requirements.txt
-#RUN #pip install greenlet==0.4.5
-#RUN pip install git+https://github.moeyy.xyz/https://github.com/python-greenlet/greenlet.git
-#RUN pip install meinheld
-#RUN pip install git+https://github.moeyy.xyz/https://github.com/mopemope/meinheld.git@1.0.2
-RUN pip install git+https://ghproxy.com/https://github.com/idot/meinheld.git@2bfe452d6608c92688d92337c87b1dd6448f4ccb
+#RUN pip install -U gunicorn
+#RUN pip install git+https://ghproxy.com/https://github.com/idot/meinheld.git@2bfe452d6608c92688d92337c87b1dd6448f4ccb
+RUN pip install fastapi
+RUN pip install "uvicorn[standard]"
 RUN wget https://raw.githubusercontent.com/Crazy-LittleBoy/yake/master/requirements.txt -O requirements.txt
 RUN pip install -r requirements.txt
 
@@ -40,5 +37,5 @@ ENV SERVER_PORT 5000
 EXPOSE "$SERVER_PORT"
 
 # set default command
-CMD [ "python", "yake-rest-api.py" ]
-#CMD ["gunicorn --workers=2 --worker-class='meinheld.gmeinheld.MeinheldWorker' yake-rest-api:app"]
+#CMD [ "python", "yake-rest-api.py" ]
+CMD [ "uvicorn yake-rest-api:app --reload --port=5000 --host=0.0.0.0"]
