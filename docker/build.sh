@@ -12,14 +12,14 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" >/dev/null 2>&1 && pwd)"
 source "$DIR/constants.sh"
 
 cd "$DIR/Dockerfiles/yake-server"
-#docker build -t "$YAKE_SERVER_IMAGE:$TAG" .
-docker build --no-cache -t "$YAKE_SERVER_IMAGE:$TAG" .
+docker build -t "$YAKE_SERVER_IMAGE:$TAG" .
+#docker build --no-cache -t "$YAKE_SERVER_IMAGE:$TAG" .
 #docker run -d -p $YAKE_PORT:$YAKE_PORT "$YAKE_SERVER_IMAGE:$TAG"
 #docker run -d -p 5000:5000 "multi-keywords/yake-server:fastest"
 
 cd "$DIR/Dockerfiles/yake"
-#docker build -t "$YAKE_IMAGE:$TAG"  .
-docker build --no-cache -t "$YAKE_IMAGE:$TAG"  .
+docker build -t "$YAKE_IMAGE:$TAG"  .
+#docker build --no-cache -t "$YAKE_IMAGE:$TAG"  .
 #docker run -d "$YAKE_IMAGE:$TAG"
 
 docker ps -a

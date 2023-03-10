@@ -163,12 +163,18 @@ def test_n2_EN():
     text_content = '''
     Kaggle has a bit of a history with Google, too, but that's pretty recent. Earlier this month, Google and Kaggle teamed up to host a $100,000 machine learning competition around classifying YouTube videos. That competition had some deep integrations with the Google Cloud Platform, too. Our understanding is that Google will keep the service running - likely under its current name. While the acquisition is probably more about Kaggle's community than technology, Kaggle did build some interesting tools for hosting its competition and 'kernels', too. On Kaggle, kernels are basically the source code for analyzing data sets and developers can share this code on the platform (the company previously called them 'scripts'). Like similar competition centric sites, Kaggle also runs a job board, too. It's unclear what Google will do with that part of the service. According to Crunchbase, Kaggle raised $12.5 million (though PitchBook says it's $12.75) since its launch in 2010. Investors in Kaggle include Index Ventures, SV Angel, Max Levchin, Naval Ravikant, Google chief economist Hal Varian, Khosla Ventures and Yuri Milner'''
 
-    pyake = yake.KeywordExtractor(lan="en", n=2, top=15, dedupLim=-1, windowsSize=1, dedupFunc='lev')
+    pyake = yake.KeywordExtractor(lan="en",
+                                  n=2,
+                                  top=15,
+                                  dedupLim=-1,
+                                  windowsSize=1,
+                                  # dedupFunc='lev'
+                                  )
 
     result = pyake.extract_keywords(text_content)
-    # print(result)
-    # for r in result:
-    #     print(r)
+    print(result)
+    for r in result:
+        print(r)
     # res = [('Google', 0.02509259635302287), ('Kaggle', 0.027297150442917317),
     #        ('CEO Anthony Goldbloom', 0.04834891465259988), ('data science', 0.05499112888517541),
     #        ('acquiring data science', 0.06029572445726576), ('Google Cloud Platform', 0.07461585862381104),
@@ -194,5 +200,5 @@ def test_n2_EN():
 # test_n3_PT()
 # test_n1_EL()
 # test_n1_AR()
-for _ in tqdm.trange(1000):
+for _ in tqdm.trange(1):
     test_n2_EN()
